@@ -1,2 +1,5 @@
-package com.example.artfriendly.exhibition.Layer;public class PerformanceService {
+package com.example.artfriendly.exhibition.Layer;
+
+public interface PerformanceServiceInterface {
+    Object getPerformanceList();
 }
