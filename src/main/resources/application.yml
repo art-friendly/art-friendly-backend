@@ -1,0 +1,16 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+  properties:
+    hibernate:
+      format_sql: true
+
+logging.level:
+  org.hibernate.SQL: debug
+
+#한국 공공데이터 api 발급 받은 Key 값
+korea:
+  culture:
+    api:
+      key: 0Ibbwf0XsXSM0oLM5rrNQewHTzRJMdGBsSNQeswnUDaMOzZ0xQlBbKhPFCBV%2BE2UWRgmPclpRJcATWcztFGgZA%3D%3D
