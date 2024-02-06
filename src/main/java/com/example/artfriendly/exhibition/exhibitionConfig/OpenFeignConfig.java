@@ -1,2 +1,17 @@
-package com.example.artfriendly.exhibition.exhibitionConfig;public class OpenFeignConfig {
+package com.example.artfriendly.exhibition.exhibitionConfig;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class OpenFeignConfig {
+
+    @Value("${korea.culture.api.key}")
+    String serviceKey;
+
+     @Bean
+    public String getServiceKey(){
+         return serviceKey;
+     }
 }

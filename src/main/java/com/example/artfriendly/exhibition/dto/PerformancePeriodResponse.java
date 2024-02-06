@@ -2,47 +2,51 @@ package com.example.artfriendly.exhibition.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class PerformanceResponse {
+public class PerformancePeriodResponse {
 
-    private Header header;
-    private Body body;
-
-    //오류 탐지를 위한 헤더
-    public static class Header {
-        private String resultCode;
-        private String resultMsg;
+    private MsgBody msgBody;
+    @Data
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class MsgBody{
+        private long totalCount;
+        private Date from;
+        private Date to;
+        private int cPage;
+        private int rows;
+        private String place;
+        private double gpsxFrom;
+        private double gpsyFrom;
+        private double gpsxTo;
+        private double gpsyTo;
+        private String keyword;
+        private List<PerforInfo> perforList;
     }
 
-    //Request
-    public static class Body {
-        private Items items;
-        private String numOfRows;
-        private String pageNo;
-        private String totalCount;
-    }
-
-    public static class Items {
-        private List<ExhibitionItem> item;
-    }
-
-    public static class ExhibitionItem {
+    @Data
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class PerforInfo{
+        private long seq;
         private String title;
-        private String type;
-        private String period;
-        private String eventPeriod;
-        private String eventSite;
-        private String charge;
-        private String contactPoint;
-        private String url;
-
-        @JsonProperty("imageObject")
-        private String imageObjectUrl;
-        private String description;
-        private String viewCount;
+        private Date startDate;
+        private Date endDate;
+        private String place;
+        private String realmName;
+        private String area;
+        private String thumbnail;
+        private double gpsX;
+        private double gpsY;
     }
 }
