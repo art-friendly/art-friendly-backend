@@ -21,18 +21,13 @@ public class OpenFeignConfig {
     @Value("${korea.culture.api.key}")
     String serviceKey;
 
+
+    Integer rows = 3;
      @Bean
     public String getServiceKey(){
          return serviceKey;
      }
+     @Bean
+    public Integer getRows(){ return rows;}
 
-    //값을 xml에서 PerformanceResponseDTO를 통해 Java로 반환
-//    @Bean
-//    public Decoder feignDecoder() {
-//        HttpMessageConverter<?> jacksonConverter = new MappingJackson2XmlHttpMessageConverter();
-//        List<HttpMessageConverter<?>> converters = new ArrayList<>();
-//        converters.add(jacksonConverter);
-//        ObjectFactory<HttpMessageConverters> objectFactory = () -> new HttpMessageConverters(converters);
-//        return new OptionalDecoder(new ResponseEntityDecoder(new SpringDecoder(objectFactory)));
-//   }
 }

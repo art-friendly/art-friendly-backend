@@ -38,7 +38,7 @@ dependencies {
 	implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:4.0.3'
 	implementation 'com.fasterxml.jackson.core:jackson-databind'
-// https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml  xml->json
 	implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.15.2'
 
 	//test 롬복

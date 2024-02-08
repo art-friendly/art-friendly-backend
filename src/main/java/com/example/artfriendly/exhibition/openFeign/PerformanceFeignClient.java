@@ -19,10 +19,13 @@ import org.springframework.web.bind.annotation.*;
    @GetMapping(value = "/openapi/rest/publicperformancedisplays/area")
    ResponseEntity<String> getPerformanceAreaList(@RequestParam String serviceKey);
    @GetMapping(value = "/openapi/rest/publicperformancedisplays/area")
-   ResponseEntity<String> getPerformanceAreaSidoSortStdr3RowsList(@RequestParam String serviceKey,@RequestParam String sido, @RequestParam String sortStdr, @RequestParam String rows);
+   ResponseEntity<String> getPerformanceAreaCPageSidoSortStdr3RowsList(@RequestParam String serviceKey,@RequestParam String cPage,@RequestParam String sido, @RequestParam String sortStdr, @RequestParam String rows);
 
    //3. 분야 별
-   @GetMapping(value = "/openapi/rest/publicperformancedisplays/realm")
-   ResponseEntity<String > getPerformanceRealmList(@RequestParam String serviceKey, @RequestParam String realmCode, @RequestParam String rows);
 
+   @GetMapping(value = "/openapi/rest/publicperformancedisplays/realm")
+   ResponseEntity<String> getPerformanceExampleRealmList(@RequestParam String serviceKey);
+
+   @GetMapping(value = "/openapi/rest/publicperformancedisplays/realm")
+   ResponseEntity<String> getPerformanceRealmList(@RequestParam String serviceKey, @RequestParam String realmCode, @RequestParam Integer rows);
 }

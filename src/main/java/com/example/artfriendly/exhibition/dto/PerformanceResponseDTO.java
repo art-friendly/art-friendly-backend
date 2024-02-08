@@ -1,6 +1,7 @@
 package com.example.artfriendly.exhibition.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,69 +9,87 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.List;
 
-
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JacksonXmlRootElement(localName = "PerformanceResponseDTO")
+@JacksonXmlRootElement(localName = "response")
 public class PerformanceResponseDTO {
 
-    @JsonProperty("MsgBody")
+    @JsonProperty("comMsgHeader")
+    private ComMsgHeader comMsgHeader;
+
+    @JsonProperty("msgBody")
     private MsgBody msgBody;
+
     @Data
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class MsgBody{
-        @JsonProperty("totalCount")
-        private long totalCount;
-        @JsonProperty("from")
-        private String from;
-        @JsonProperty("to")
-        private String to;
-        @JsonProperty("cPage")
-        private int cPage;
-        @JsonProperty("rows")
-        private int rows;
-        @JsonProperty("place")
-        private String place;
-        @JsonProperty("gpsxfrom")
-        private double gpsxFrom;
-        @JsonProperty("gpsyfrom")
-        private double gpsyFrom;
-        @JsonProperty("gpsxto")
-        private double gpsxTo;
-        @JsonProperty("gpsyto")
-        private double gpsyTo;
-        @JsonProperty("keyword")
-        private String keyword;
-        @JsonProperty("perforList")
-        private List<PerforInfo> perforList;
+    public static class ComMsgHeader {
+        @JacksonXmlProperty(localName = "RequestMsgID")
+        private String requestMsgID;
+
+        @JacksonXmlProperty(localName = "ResponseTime")
+        private String responseTime;
+
+        @JacksonXmlProperty(localName = "ResponseMsgID")
+        private String responseMsgID;
+
+        @JacksonXmlProperty(localName = "SuccessYN")
+        private String successYN;
+
+        @JacksonXmlProperty(localName = "ReturnCode")
+        private String returnCode;
+
+        @JacksonXmlProperty(localName = "ErrMsg")
+        private String errMsg;
     }
 
     @Data
     @Builder
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class PerforInfo{
-        @JsonProperty("seq")
-        private long seq;
-        @JsonProperty("title")
+    public static class MsgBody {
+        @JacksonXmlProperty(localName = "totalCount")
+        private int totalCount;
+
+        @JacksonXmlProperty(localName = "cPage")
+        private int cPage;
+
+        @JacksonXmlProperty(localName = "rows")
+        private int rows;
+
+        @JacksonXmlProperty(localName = "realmCode")
+        private String realmCode;
+
+        @JsonProperty("perforList")
+        @JacksonXmlProperty(localName = "perforList")
+        private List<PerforList> perforList;
+    }
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class PerforList {
+        @JacksonXmlProperty(localName = "seq")
+        private String seq;
+        @JacksonXmlProperty(localName = "title")
         private String title;
-        @JsonProperty("startDate")
+        @JacksonXmlProperty(localName = "startDate")
         private String startDate;
-        @JsonProperty("endDate")
+        @JacksonXmlProperty(localName = "endDate")
         private String endDate;
-        @JsonProperty("place")
+        @JacksonXmlProperty(localName = "place")
         private String place;
-        @JsonProperty("realmName")
+        @JacksonXmlProperty(localName = "realmName")
         private String realmName;
-        @JsonProperty("area")
+        @JacksonXmlProperty(localName = "area")
         private String area;
-        @JsonProperty("thumbnail")
+        @JacksonXmlProperty(localName = "thumbnail")
         private String thumbnail;
-        @JsonProperty("gpsX")
-        private double gpsX;
-        @JsonProperty("gpsY")
-        private double gpsY;
+        @JacksonXmlProperty(localName = "gpsX")
+        private String gpsX;
+        @JacksonXmlProperty(localName = "gpsY")
+        private String gpsY;
     }
 }

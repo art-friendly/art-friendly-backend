@@ -1,4 +1,6 @@
 package com.example.artfriendly.exhibition.Layer;
+import com.example.artfriendly.exhibition.dto.PerformanceRequestDTO;
+import com.example.artfriendly.exhibition.dto.PerformanceResponseDTO;
 import org.springframework.http.ResponseEntity;
 
 public interface PerformanceService {
@@ -8,9 +10,10 @@ public interface PerformanceService {
    public ResponseEntity<String> getPerformancePeriod3RowsList(String rows);
    //2. Area
    public ResponseEntity<String> getPerformanceAreaList();
-   public ResponseEntity<String> getPerformanceAreaSidoSortStdr3RowsList(String sido,String sortStdr, String rows);
+   public ResponseEntity<String> getPerformanceAreaCPageSidoSortStdr3RowsList(String cPage,String sido,String sortStdr, String rows);
 
    //3. Realm
-   public ResponseEntity<String> getPerformanceRealmSortStdr3RowsList(String realmCode, String rows);
 
+   public ResponseEntity<String> getPerformanceExampleRealmList();
+   public PerformanceResponseDTO getPerformanceRealmData(PerformanceRequestDTO realmRequestDTO);
 }
