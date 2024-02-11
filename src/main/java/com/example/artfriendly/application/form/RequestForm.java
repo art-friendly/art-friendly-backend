@@ -1,4 +1,4 @@
-package com.example.artfriendly.client;
+package com.example.artfriendly.application.form;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,8 +17,8 @@ public class RequestForm {
     private String clientId;
     @Value("${kakao.clientSecret}")
     private String clientSecret;
-    @Value("${kakao.redirectUri}")
-    private String redirectUri;
+    @Value("${kakao.login.redirectUri}")
+    private String loginRedirectUri;
     @Value("${kakao.logout.redirectUri}")
     private String logoutRedirectUri;
     private String code;
@@ -31,7 +31,7 @@ public class RequestForm {
         params.add("grant_type", "authorization_code");
         params.add("client_id", clientId);
         params.add("client_secret", clientSecret);
-        params.add("redirect_uri", redirectUri);
+        params.add("redirect_uri", loginRedirectUri);
         params.add("code", code);
         return new HttpEntity<>(params, headers);
     }
@@ -51,4 +51,10 @@ public class RequestForm {
         return new HttpEntity<>(headers);
     }
 
+    public HttpEntity<MultiValueMap<String, String>>  makeRequestUserInfoForm(String accessToken){
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+        headers.add("Authorization", accessToken);
+        return new HttpEntity<>(headers);
+    }
 }
