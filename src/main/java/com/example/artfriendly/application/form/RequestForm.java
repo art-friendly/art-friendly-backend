@@ -23,7 +23,7 @@ public class RequestForm {
     private String logoutRedirectUri;
     private String code;
 
-    public HttpEntity<MultiValueMap<String, String>>  makeRequestTokenForm(String code){
+    public HttpEntity<MultiValueMap<String, String>>  requestToken(String code){
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
 
@@ -36,22 +36,8 @@ public class RequestForm {
         return new HttpEntity<>(params, headers);
     }
 
-    public HttpEntity<MultiValueMap<String, String>>  makeRequestLogoutForm(String accessToken){
+    public HttpEntity<MultiValueMap<String, String>> makeHeadermWithToken (String accessToken){
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-        headers.add("Authorization", accessToken);
-        return new HttpEntity<>(headers);
-    }
-
-    public HttpEntity<MultiValueMap<String, String>>  makeRequestUnlinkForm(String accessToken){
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-        headers.add("Authorization", accessToken);
-        return new HttpEntity<>(headers);
-    }
-
-    public HttpEntity<MultiValueMap<String, String>>  makeRequestUserInfoForm(String accessToken){
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
         headers.add("Authorization", accessToken);

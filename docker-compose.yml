@@ -4,7 +4,7 @@ services:
   mysql:
     image: "mysql:latest"
     ports:
-      - "3306:3300"
+      - "3306:3306"
     container_name: "artfriendly-mysql-container"
     environment:
       MYSQL_DATABASE: art_friendly
@@ -15,7 +15,7 @@ services:
     image: "redis:latest"
     container_name: "artfriendly-redis-container"
     ports:
-      - "6380:6379"
+      - "6380:6370"
     labels:
       - "name=redis"
       - "mode=standalone"

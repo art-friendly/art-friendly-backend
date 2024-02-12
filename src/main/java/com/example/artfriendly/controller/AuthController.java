@@ -1,5 +1,6 @@
 package com.example.artfriendly.controller;
 
+import com.example.artfriendly.model.dto.OAuthTokenDto;
 import com.example.artfriendly.service.AuthService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
@@ -13,9 +14,10 @@ public class AuthController {
     private final AuthService authService;
 
     @GetMapping("/oauth/kakao/login")
-    public ResponseEntity<String> kakaoLogin(@RequestParam(name = "code") String code) throws JsonProcessingException {
+    public ResponseEntity<OAuthTokenDto> kakaoLogin(@RequestParam(name = "code") String code) throws JsonProcessingException {
         return ResponseEntity.ok(authService.kakoLogin(code));
     }
+
 
     @GetMapping("oauth/kakao/logout")
     public ResponseEntity<String> kakaoLogout(@RequestHeader(name = "Authorization") String token) throws JsonProcessingException {
