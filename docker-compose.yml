@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: "mysql:latest"
+    ports:
+      - "3306:3300"
+    container_name: "artfriendly-mysql-container"
+    environment:
+      MYSQL_DATABASE: art_friendly
+      MYSQL_ROOT_PASSWORD: 1
+    volumes:
+      - myslq-data:/data
+  redis:
+    image: "redis:latest"
+    container_name: "artfriendly-redis-container"
+    ports:
+      - "6380:6379"
+    labels:
+      - "name=redis"
+      - "mode=standalone"
+    volumes:
+      - redis-data:/data
+volumes:
+  redis-data:
+  myslq-data:
