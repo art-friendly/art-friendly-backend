@@ -13,4 +13,5 @@ public class UserDto {
     public static UserDto from (User user) {
         return new UserDto(user.getNickname(), user.getPictureUrl());
     }
+
 }
