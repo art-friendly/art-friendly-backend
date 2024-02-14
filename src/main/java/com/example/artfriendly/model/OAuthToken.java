@@ -1,8 +1,12 @@
 package com.example.artfriendly.model;
 
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class OAuthToken {
     private String access_token;
     private String token_type;
